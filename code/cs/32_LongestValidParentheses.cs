@@ -53,9 +53,11 @@ namespace Solution
                 else break;
             }
             var valueMap = new int[right - left];
-            for(var i=left; i< right; i++)
+            var reverseMap = new int[right - left];
+            for (var i=left; i< right; i++)
             {
                 valueMap[i - left] = s[i] == '(' ? 1 : -1;
+                reverseMap[i - left] = s[right - i + left - 1] == '(' ? -1 : 1;
             }
 
             var beginIndex = 0;
@@ -76,20 +78,19 @@ namespace Solution
                 }
             }
 
-            while(beginIndex < valueMap.Length)
+            var reverseBeginIndex = 0;
+            var reverseEndIndex = 0;
+            value = 0;
+            while (reverseEndIndex < reverseMap.Length)
             {
-                if(valueMap[beginIndex] < 0)
+                value += reverseMap[reverseEndIndex++];
+                while (value < 0)
                 {
-                    value -= valueMap[beginIndex++];
+                    value -= reverseMap[reverseBeginIndex++];
                 }
-                else if (value == 0)
+                if (value == 0)
                 {
-                    UpdateMaxCount(ref maxCount, beginIndex, endIndex);
-                    break;
-                }
-                else
-                {
-                    value -= valueMap[beginIndex++];
+                    UpdateMaxCount(ref maxCount, reverseBeginIndex, reverseEndIndex);
                 }
             }
             return maxCount;

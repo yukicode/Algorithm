@@ -12,7 +12,7 @@ namespace Solution
     */
     public class LongestValidParentheses
     {
-        public int LongestValidParentheses_O_n2(string s)
+        public int LongestValidParentheses_AllForwardIteration(string s)
         {
             var length = s.Length;
             var maxCount = 0;

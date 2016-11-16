@@ -8,7 +8,7 @@ namespace Tests
     class _32_Tests
     {
         [TestFixture]
-        public class LongestValidParnthesesTests_O_n2
+        public class LongestValidParnthesesTests_AllForwardIteration
         {
 
             [Test]
@@ -16,7 +16,7 @@ namespace Tests
             {
                 var emptyString = "";
                 var longestParFinder = new LongestValidParentheses();
-                var longest = longestParFinder.LongestValidParentheses_O_n2(emptyString);
+                var longest = longestParFinder.LongestValidParentheses_AllForwardIteration(emptyString);
 
                 Assert.AreEqual(longest, 0);
             }
@@ -27,8 +27,8 @@ namespace Tests
                 var s1 = "((())()()(()))";
                 var s2 = "((((((()))))))";
                 var longestParFinder = new LongestValidParentheses();
-                var longest1 = longestParFinder.LongestValidParentheses_O_n2(s1);
-                var longest2 = longestParFinder.LongestValidParentheses_O_n2(s2);
+                var longest1 = longestParFinder.LongestValidParentheses_AllForwardIteration(s1);
+                var longest2 = longestParFinder.LongestValidParentheses_AllForwardIteration(s2);
 
                 Assert.AreEqual(longest1, s1.Length);
                 Assert.AreEqual(longest2, s2.Length);
@@ -40,23 +40,23 @@ namespace Tests
                 var s1 = "((())()()(())))))";
                 var s2 = "((((((((()))))))";
                 var longestParFinder = new LongestValidParentheses();
-                var longest1 = longestParFinder.LongestValidParentheses_O_n2(s1);
-                var longest2 = longestParFinder.LongestValidParentheses_O_n2(s2);
+                var longest1 = longestParFinder.LongestValidParentheses_AllForwardIteration(s1);
+                var longest2 = longestParFinder.LongestValidParentheses_AllForwardIteration(s2);
 
                 Assert.AreEqual(longest1, s1.Length-3);
                 Assert.AreEqual(longest2, s2.Length-2);
             }
 
             [Test]
-            public void LongestValidPar_StringWithInvalidPerInMiddle()
+            public void LongestValidPar_StringWithInvalidParenthesesInMiddle()
             {
                 var s1 = "()(()";
                 var s2 = "))))((()((";
                 var s3 = "(())()(()((";
                 var longestParFinder = new LongestValidParentheses();
-                var longest1 = longestParFinder.LongestValidParentheses_O_n2(s1);
-                var longest2 = longestParFinder.LongestValidParentheses_O_n2(s2);
-                var longest3 = longestParFinder.LongestValidParentheses_O_n2(s3);
+                var longest1 = longestParFinder.LongestValidParentheses_AllForwardIteration(s1);
+                var longest2 = longestParFinder.LongestValidParentheses_AllForwardIteration(s2);
+                var longest3 = longestParFinder.LongestValidParentheses_AllForwardIteration(s3);
                 Assert.AreEqual(longest1, 2);
                 Assert.AreEqual(longest2, 2);
                 Assert.AreEqual(longest3, 6);
@@ -68,8 +68,8 @@ namespace Tests
                 var s1 = "((((((((((((((((((((((((((((";
                 var s2 = "))))))))))))))))))))))))))))))";
                 var longestParFinder = new LongestValidParentheses();
-                var longest1 = longestParFinder.LongestValidParentheses_O_n2(s1);
-                var longest2 = longestParFinder.LongestValidParentheses_O_n2(s2);
+                var longest1 = longestParFinder.LongestValidParentheses_AllForwardIteration(s1);
+                var longest2 = longestParFinder.LongestValidParentheses_AllForwardIteration(s2);
                 Assert.AreEqual(longest1, 0);
                 Assert.AreEqual(longest2, 0);
             }
@@ -81,7 +81,7 @@ namespace Tests
                 var left = "((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((";
                 var right = ")))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))";
                 var longString = left + right;
-                var longest = longestParFinder.LongestValidParentheses_O_n2(longString);
+                var longest = longestParFinder.LongestValidParentheses_AllForwardIteration(longString);
 
                 Assert.AreEqual(right.Length*2, longest);
             }
